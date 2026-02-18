@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login Page</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        html,body{
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            height: 100%;
+            background-color: #F8F9FB;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="outer">
+        <h2>Vault</h2>
+        <h3>Sign in</h3>
+        <h4>to access Vault Home</h4>
+
+        <div class="inner">
+            <input id="email" class="email_signin" type="email" placeholder="enter email">
+            <input id="password" class="pass_signin" type="password" placeholder="enter password">   
+        </div>
+
+        <button onclick="login()" class="signin_button">Sign in</button>
+
+        <div class="acc">
+            <h5>Don’t have a account?</h5>
+            <!-- FIXED ROUTE -->
+            <a href="{{ url_for('signup') }}">Sign up now</a>
+        </div>
+
+        <div class="text" id="text"></div>
+    </div>
+
+
+    <script>
+        function login() {
+
+            let mail = document.getElementById("email").value;
+            let pass = document.getElementById("password").value;
+            let message = document.getElementById("text");
+
+            if (mail === "" || pass === "") {
+                message.innerText = "All fields are required!";
+                message.style.color = "red";
+                return;
+            }
+
+            fetch("/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: mail,
+                    password: pass
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+
+                if (data.success) {
+                    message.innerText = "Login successful";
+                    message.style.color = "blue";
+
+                    setTimeout(() => {
+                        window.location.href = "/home";
+                    }, 1500);
+                } else {
+                    message.innerText = data.message;
+                    message.style.color = "red";
+                }
+
+            });
+        }
+    </script>
+
+</body>
+</html>

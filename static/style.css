@@ -1,0 +1,311 @@
+*{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: #F8F9FB;
+}
+
+.con {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+    padding: 15px 30px;
+}
+
+.name h3 {
+    margin: 0;
+    font-weight: bold;
+    color: #006eff;
+}
+
+.name a{
+    text-decoration: none;
+    font-size: large;
+    font-weight: bold;
+}
+
+.Sign .nav-link {
+    color: #ff0000;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.Sign .nav-link:hover {
+    color: #0d6efd;
+}
+
+.out {
+    background-color: #F8F9FB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.first {
+    max-width: 1000px;
+    text-align: center;
+    padding: 50px;
+}
+
+.first h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.first h4 {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.first a {
+    display: inline-block;
+    background-color: #dc4343;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.first a:hover {
+    background-color: #ff0000cb;
+}
+
+.first .img {
+    margin-top: 40px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* sign in and sign up */
+
+.outer{
+    border: 1px solid gray;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    width: 400px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: -5px -5px 30px 5px #a3b1c6,5px 10px 40px 5px #ffdddd;
+}
+
+
+
+.inner{
+    justify-items: left;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.outer1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    border-radius: 10px;
+    width: 400px;
+}
+
+/* sign in styling */
+
+.outer h2,
+.outer h4,
+.outer h3 {
+    margin: 1px 0;
+    align-self: flex-start; 
+    text-align: left;
+    color: #333;
+    font-weight: 200;
+}
+
+.outer h3{
+    font-weight: 600;
+}
+
+.outer h2{
+    font-weight: 700;
+}
+
+.outer h5{
+    font-weight: 200;
+}
+
+
+.email_signin{
+    margin: 10px;
+    background: rgb(233, 233, 233);
+    width: 300px;
+    padding: 10px;
+}
+
+.pass_signin{
+    margin: 10px;
+    background: rgb(233, 233, 233);
+    width: 300px;
+    padding: 10px;
+}
+
+.signin_button{
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+    background: rgb(47, 117, 230);
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+}
+
+.signin_button:hover{
+    transition: background-color 0.3s ease-in-out;
+    background-color:#0040ff;
+}
+
+.acc{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.acc a{
+    margin-left: 10px;
+    font-size: small;
+}
+
+/* sign up styling */
+
+.center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.user{
+    margin: 10px;
+    border: 1px solid black;
+    background: #F8F9FB;
+    width: 500px;
+    padding: 10px;
+}
+
+.email_signup{
+    margin: 10px;
+    border: 1px solid black;
+    background: #F8F9FB;
+    width: 500px;
+    padding: 10px;
+}
+
+.pass_signup{
+    margin: 10px;
+    border: 1px solid black;
+    background: #F8F9FB;
+    width: 500px;
+    padding: 10px;
+}
+
+.signup_button{
+    border-radius: 5px;
+    margin: 10px;
+    border: 1px solid black;
+    background: #ff7070;
+    width: 300px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: small;
+    font-weight: bold;
+    color: white;
+    transition: background-color 0.3s ease-in-out
+}
+
+.signup_button:hover{
+    background-color:#ff0000;
+}
+
+.text{
+    font-size: small;
+    padding: 5px;
+}
+
+input {
+    border: none;
+    padding: 8px;
+    outline: none;
+    transition: border 0.3s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+input:hover {
+    border: 1px solid rgb(255, 0, 0);
+    box-shadow: 0px 0px 10px 1px rgb(255, 0, 0);
+    outline: none; 
+}
+
+label {
+    align-self: flex-start;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+
+.pass {
+    background: #a3b1c6;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid beige;
+  }
+  
+  .pass_con {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+  }
+
+  .pass_con p{
+    font-weight: 500;
+    color: white;
+    margin-top: 15px;
+  }
+  
+  .add button {
+    padding: 10px 15px;
+    background: #a3b1c6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .add button:hover {
+    background: #000000;
+  }
+
+
+ 
+  
+  

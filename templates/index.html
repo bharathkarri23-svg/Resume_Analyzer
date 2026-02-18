@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Flask Static CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="con">
+        <div class="name">
+            <a class="name" href="{{ url_for('home') }}">Vault</a>
+        </div>
+
+        <div class="Sign">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="out">
+        <div class="first">
+            <h2>Your life's work,</h2>
+            <h2>powered by our life's work</h2>
+            <hr>
+            <h4>A unique and powerful software suite to transform the way you work</h4>
+            <a href="{{ url_for('signup') }}">Get Started For Free</a>
+            <img class="img" 
+                 src="https://www.zoho.com/sites/zweb/images/zoho_general_pages/zh-homev2-banner-india-3.webp" 
+                 alt="">
+        </div>
+    </div>
+
+</body>
+</html>

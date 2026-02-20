@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #f8f9fb;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <div class="name">
+            <!-- FIXED -->
+            <a class="name" href="{{ url_for('home') }}">Vault</a>
+        </div>
+
+        <div class="Sign">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <!-- FIXED -->
+                    <a class="nav-link" href="{{ url_for('login') }}">Sign In</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="center-wrapper">
+        <div class="outer1">
+            <h4>Start with your free account today.</h4>
+            <div class="inner">
+                <label for="username">Username</label>
+                <input class="user" id="username" type="text" placeholder="Enter username">
+        
+                <label for="emailid">Email</label>
+                <input class="email_signup" id="emailid" type="email" placeholder="Enter email">
+        
+                <label for="pass">Password</label>
+                <input class="pass_signup" id="pass" type="password" placeholder="Enter password">   
+            </div>
+        
+            <button id="signup" onclick="savedata()" class="signup_button">Sign up</button>
+            <div class="text" id="text"></div>
+        </div>            
+    </div>
+
+    <script>
+    function savedata() {
+
+        let user = document.getElementById("username").value;
+        let email = document.getElementById("emailid").value;
+        let pass = document.getElementById("pass").value;
+        let message = document.getElementById("text");
+
+        let passRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (user === "" || email === "" || pass === "") {
+            message.innerText = "All fields are required!";
+            message.style.color = "red";
+            return;
+        }
+
+        if (!passRegex.test(pass)) {
+            message.innerText = "Password must be at least 8 characters long and include letters, numbers, and symbols.";
+            message.style.color = "red";
+            return;
+        }
+
+        fetch("/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: user,
+                email: email,
+                password: pass
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                message.innerText = "Registered Successfully";
+                message.style.color = "blue";
+
+                setTimeout(function () {
+                    window.location.href = "/login";
+                }, 1500);
+            } else {
+                message.innerText = data.message;
+                message.style.color = "red";
+            }
+        });
+    }
+    </script>
+
+</body>
+</html>

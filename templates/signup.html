@@ -7,6 +7,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="style.css">
 
     <style>
     html, body {
@@ -40,9 +41,6 @@
         <div class="outer1">
             <h4>Start with your free account today.</h4>
             <div class="inner">
-                <label for="username">Username</label>
-                <input class="user" id="username" type="text" placeholder="Enter username">
-        
                 <label for="emailid">Email</label>
                 <input class="email_signup" id="emailid" type="email" placeholder="Enter email">
         
@@ -51,6 +49,16 @@
             </div>
         
             <button id="signup" onclick="savedata()" class="signup_button">Sign up</button>
+            
+            <div class="gs-outter">
+                <button class="google_button" onclick="googleLogin()">
+                <div class="google-signup">
+                    <p>Signup with Google</p>
+                    <img src="https://img.icons8.com/color/48/google-logo.png" alt="google-logo">
+                </div>
+            </button>
+            </div>
+
             <div class="text" id="text"></div>
         </div>            
     </div>
@@ -58,14 +66,12 @@
     <script>
     function savedata() {
 
-        let user = document.getElementById("username").value;
         let email = document.getElementById("emailid").value;
         let pass = document.getElementById("pass").value;
-        let message = document.getElementById("text");
 
         let passRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-        if (user === "" || email === "" || pass === "") {
+        if (email === "" || pass === "") {
             message.innerText = "All fields are required!";
             message.style.color = "red";
             return;
@@ -83,7 +89,6 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username: user,
                 email: email,
                 password: pass
             })
@@ -102,6 +107,9 @@
                 message.style.color = "red";
             }
         });
+    }
+    function googleLogin(){
+        window.location.href="/login/google";
     }
     </script>
 

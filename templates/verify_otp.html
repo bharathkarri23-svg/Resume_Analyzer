@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form method="POST">
+    <input type="text" name="otp" placeholder="Enter OTP" required>
+    <button type="submit">Verify OTP</button>
+</form>
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<br>
+
+<button id="resendBtn" onclick="resendOTP()">Resend OTP</button>
+
+<p id="timer"></p>
+
+<script>
+let countdown = 30;
+let resendBtn = document.getElementById("resendBtn");
+let timerText = document.getElementById("timer");
+
+resendBtn.disabled = true;
+
+let interval = setInterval(function() {
+    countdown--;
+    timerText.innerHTML = "Resend available in " + countdown + " seconds";
+
+    if (countdown <= 0) {
+        clearInterval(interval);
+        resendBtn.disabled = false;
+        timerText.innerHTML = "";
+    }
+}, 1000);
+
+function resendOTP() {
+    window.location.href = "/resend_otp";
+}
+</script>
+</body>
+</html>
